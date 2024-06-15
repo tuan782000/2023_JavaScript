@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fetch API</title>
+    </head>
+    <body>
+        <button id="getText">Get Text</button>
+        <div id="output"></div>
+        <script>
+            // Create a function getText
+            // const getText = () => {
+            //     // console.log(123);
+            //     fetch("sample.txt").then(function (res) {
+            //         // console.log(res);
+            //         // console.log(res.text()); // gọi rồi lúc return nên bỏ đi để return
+            //         return res.text();
+            //     })
+            //     .then(function(data) {
+            //         console.log(data)
+            //     });
+            // };
+
+            const getText = () => {
+                fetch("sample.txt")
+                    .then((res) => res.text())
+                    // res.text() được gọi để đọc nội dung và nó sẽ được truyền vào hàm then kế tiếp để xử lý dữ liệu.
+                    // .then((data) => console.log(data));
+                    .then((data) => {
+                        document.getElementById("output").innerHTML = data;
+                    })
+                    .catch(err => console.log(err));
+            };
+            // Create an Event listener
+            document
+                .getElementById("getText")
+                .addEventListener("click", getText);
+        </script>
+    </body>
+</html>
